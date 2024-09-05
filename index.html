@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"
-          href="./assets/images/favicon-32x32.png">
+          href="./assets/images/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@800&display=swap" rel="stylesheet">
     <title>Frontend Mentor | Blog preview card</title>
     <style>
-        @font-face {
-            font-family: Figtree;
-            src: url('./assets/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+        :root {
+            --yellow: hsl(47, 88%, 63%);
+            --white: hsl(0, 0%, 100%);
+            --gray-500: hsl(0, 0%, 42%);
+            --gray-950: hsl(0, 0%, 7%);
+            --text-base: clamp(14px, 2vw, 16px);
         }
 
         * {
@@ -19,16 +25,19 @@
         }
 
         body {
-            background-color: #f5cf4e;
+            background-color: var(--yellow);
             font-family: Figtree, sans-serif;
-            font-size: 16px;
-            line-height: 1.4;
+            font-size: var(--text-base);
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--gray-500);
         }
 
         main {
             display: grid;
             place-items: center;
             height: 100vh;
+            margin-inline: 24px;
         }
 
         a {
@@ -39,19 +48,18 @@
         }
 
         a:hover {
-            color:#f5cf4e;
+            color: var(--yellow);
         }
 
         .card {
-            background-color: #ffffff;
-            border: 1px solid black;
+            background-color: var(--white);
+            border: 1px solid var(--gray-950);
             border-radius: 20px;
-            box-shadow: 8px 8px 0 1px black;
-            padding: 18px;
-            width: min-content;
+            box-shadow: 8px 8px 0 0 black;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 24px;
         }
 
         img {
@@ -59,42 +67,47 @@
         }
 
         .card > img {
-            width: auto;
+            width: 100%;
+            max-width: 336px;
             border-radius: 10px;
         }
 
+        .card__content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .category {
-            background-color: #f5cf4e;
-            font-weight: 700;
-            padding: 5px 13px;
-            font-size: 12px;
+            background-color: var(--yellow);
+            font-weight: 800;
+            font-size: clamp(12px, 2vw, 14px);
+            color: var(--gray-950);
+            padding: 4px 12px;
             width: fit-content;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         .pub-date {
             font-size: 12px;
-            font-weight: 600;
+            color: var(--gray-950);
         }
 
         h1 {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        p {
-            font-weight: 300;
+            font-size: clamp(20px, 5vw + 1rem, 24px);
+            font-weight: 800;
+            line-height: 1.5;
         }
 
         .author {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .author > img {
-            width: 30px;
+            width: 32px;
         }
     </style>
 </head>
@@ -103,11 +116,13 @@
     <div class="card">
         <img src="./assets/images/illustration-article.svg"
              alt="blog-thumbnail">
+        <div class="card__content">
         <span class="category">Learning</span>
         <span class="pub-date">Published 21 Dec 2023</span>
         <h1><a href="#">HTML & CSS foundations</a></h1>
         <p>These languages are the backbone of every website, defining
             structure, content, and presentation.</p>
+        </div>
         <div class="author">
             <img src="./assets/images/image-avatar.webp" alt="author-avatar">
             <span>Greg Hooper</span>
